@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 public class RelativeLayout extends AppCompatActivity {
-    DatePicker picker;
+    DatePickerDialog picker;
     EditText eText;
     Button btnGet;
     TextView tvw;
@@ -33,14 +33,12 @@ public class RelativeLayout extends AppCompatActivity {
                 int month = cldr.get(Calendar.MONTH);
                 int year = cldr.get(Calendar.YEAR);
                 // date picker dialog
-                picker = new DatePickerDialog(RelativeLayout.this,
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                                  int dayOfMonth) {
-                                eText.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                            }
-                        }, year, month, day);
+                picker = new DatePickerDialog(RelativeLayout.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        eText.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                    }
+                }, day, month, year);
                 picker.show();
             }
         });
